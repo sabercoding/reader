@@ -16,8 +16,29 @@ $books = (new \reader\Ots())::getBooks();
     <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
     <link type="text/css" rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" >
     <link type="text/css" rel="stylesheet" href="css/photoswipe/photoswipe.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
 
+    <script type="text/javascript">
+        $(function() {
+            $("#all").click(function() {
+                $('input[name="items"]').attr("checked",true);
+            });
 
+            $("#update").click(function(){
+                var arr = [];
+                $("input[name='items']:checked").each(function () {
+                    arr.push(this.value);
+                });
+                $.post("/scan.php",
+                    {
+                        book:arr
+                    },
+                    function(data,status){
+                        alert("数据：" + data + "\n状态：" + status);
+                    });
+            });
+        });
+    </script>
 </head>
 <body class="o-page">
 <div id="page">
@@ -28,12 +49,20 @@ $books = (new \reader\Ots())::getBooks();
     </div>
     <div class="subHeader"><i class="i-gallery i-small"></i>书列表</div>
     <div id="content">
+        <div>
+            <?php
+            foreach ($books as $book) {
+                echo '<input type="checkbox" name="items" value="'.$book.'">'.$book.'<br />';
+            }
+            ?>
+<!--            <input type="checkbox" id="all">-->
 
-        <?php
-        foreach ($books as $book) {
-            echo '<h3 class="title"><a href="/chapter_list.php?book='.$book.'" rel="external">'.$book.'</a></h3>';
-        }
-        ?>
+            <br />
+            <button id="all">全选</button>
+            <button id="update">更新</button>
+            <br /><br />
+        </div>
+
     </div>
 
 

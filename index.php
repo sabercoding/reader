@@ -17,12 +17,6 @@ $books = (new \reader\Ots())::getBooks();
 		<link type="text/css" rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" >
 		<link type="text/css" rel="stylesheet" href="css/photoswipe/photoswipe.css" />
 
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/photoswipe/klass.min.js"></script>
-		<script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
-		<script type="text/javascript" src="js/jquery.mobile-1.0rc2.min.js"></script>
-		<script type="text/javascript" src="js/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
-		<script type="text/javascript" src="js/o-script.js"></script>
 
 	</head>
 	<body class="o-page">
@@ -41,12 +35,10 @@ foreach ($books as $book) {
 }
 ?>
                     </div>
-				</div>
+
 				
-			</div>
-			
+
 			<div class="subFooter">Copyright 2013. All rights reserved.</div>
-			
 		</div>
 	</body>
 </html>

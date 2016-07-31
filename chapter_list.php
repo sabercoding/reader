@@ -17,18 +17,12 @@ $chapters = (new \reader\Ots())::getChapters($book_name);
         <link type="text/css" rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" >
         <link type="text/css" rel="stylesheet" href="css/photoswipe/photoswipe.css" />
 
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/photoswipe/klass.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.0rc2.min.js"></script>
-        <script type="text/javascript" src="js/photoswipe/code.photoswipe.jquery-3.0.4.min.js"></script>
-        <script type="text/javascript" src="js/o-script.js"></script>
 	</head>
 	<body class="o-page">
 		<div id="page">
 			<div id="header">
 				<a href="#menu" rel="external"></a>
-				
+				<a style="position:initial; width: auto;background:no-repeat -21px -303px" href="reader.sabre91.com">书列表</a>
 				<a class="backBtn" href="javascript:history.back();"></a>
 			</div>
 			<div class="subHeader"><i class="i-gallery i-small"></i>书列表</div>

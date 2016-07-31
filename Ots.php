@@ -102,7 +102,7 @@ class Ots {
             )
         );
         $ret = self::getInstance()->getRow($request);
-        return array_merge($ret['row']['primary_key_columns'],$ret['row']['attribute_columns']);
+        return array_merge($ret['row']['primary_key_columns'], $ret['row']['attribute_columns']);
     }
 
     public static function putBookName($book_name) {
@@ -121,7 +121,15 @@ class Ots {
         return true;
     }
 
-    public static function putChapter($book_name, $chapter_name, $content) {
+    public static function putChapter($book_name, $chapter_name, $content = array(), $last_chapter = array(), $previous_chapter = array(), $time) {
+        $attr = array(
+            'content' => $content,
+            'last_chapter' => $last_chapter,
+            'previous_chapter' => $previous_chapter,
+            'ctime' => $time,
+            'mtime' => time()
+        );
+        $attr = array_filter($attr);
         $request = array(
             'table_name' => 'Chapters',
             'condition' => 'IGNORE',         // condition可以为IGNORE, EXPECT_EXIST, EXPECT_NOT_EXIST
@@ -129,13 +137,9 @@ class Ots {
                 'book_name' => $book_name,
                 'chapter_name' => $chapter_name
             ),
-            'attribute_columns' => array(    // 属性
-                'content' => $content,
-                'ctime' => time()
-            )
+            'attribute_columns_to_put' => $attr
         );
-
-        self::getInstance()->putRow($request);
+        self::getInstance()->updateRow($request);
         return true;
     }
 }
